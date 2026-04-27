@@ -22,6 +22,16 @@
             <td><input type="text" name="Pendidikan_Terakhir"></td>
         </tr>
         <tr>
+            <td>Jurusan ID</td>
+            <td>:</td>
+            <td><input type="text" name="Jurusan_id"></td>
+        </tr>
+        <tr>
+            <td>Tempat Lahir</td>
+            <td>:</td>
+            <td><input type="text" name="Tempat_Lahir"></td>
+        </tr>
+        <tr>
             <td>Tanggal Lahir</td>
             <td>:</td>
             <td><input type="text" name="Tanggal_Lahir"></td>

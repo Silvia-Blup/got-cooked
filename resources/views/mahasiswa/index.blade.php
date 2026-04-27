@@ -38,7 +38,7 @@
             </a>
             <form action="{{route('mahasiswa.delete', $m->id)}}" method="post" style="display:inline;">
             @csrf
-             @method('DELETE') 
+            @method('DELETE') 
             <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
             </form>
         </td>
