@@ -12,7 +12,9 @@ class DosenController extends Controller
      */
     public function index()
     {
-        //
+        return view('dosen.index', [
+        'dosen' => dosen::all()
+        ]);
     }
 
     /**
@@ -20,7 +22,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        //
+        return view('dosen.create', []);
     }
 
     /**
@@ -28,7 +30,10 @@ class DosenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        dosen::create($data);
+
+        return redirect()->action([DosenController::class, 'index']);
     }
 
     /**
@@ -36,7 +41,7 @@ class DosenController extends Controller
      */
     public function show(dosen $dosen)
     {
-        //
+        return dosen::find($id);
     }
 
     /**
@@ -44,7 +49,9 @@ class DosenController extends Controller
      */
     public function edit(dosen $dosen)
     {
-        //
+        return view('dosen.edit', [
+            'dosen' => dosen::find($id)
+        ]);
     }
 
     /**
@@ -52,7 +59,11 @@ class DosenController extends Controller
      */
     public function update(Request $request, dosen $dosen)
     {
-        //
+        $data = $request->except('_token', 'id', '_method');
+
+        dosen::find($id)->update($data);
+
+        return redirect()->action([DosenController::class, 'index']);
     }
 
     /**
@@ -60,6 +71,8 @@ class DosenController extends Controller
      */
     public function destroy(dosen $dosen)
     {
-        //
+       dosen::find($id)->delete();
+
+         return redirect()->action([DosenController::class, 'index']);
     }
 }

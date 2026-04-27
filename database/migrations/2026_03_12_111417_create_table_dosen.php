@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('Fullname');
             $table->string('NIP')->unique();
             $table->string('NIDN')->unique();
-            $table->string('Pendidikan terakhir');
+            $table->string('Pendidikan_Terakhir');
             $table->string('Jurusan_id');
             $table->string('Tempat_Lahir');
             $table->date('Tanggal_Lahir');
