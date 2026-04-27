@@ -47,7 +47,7 @@ class DosenController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(dosen $dosen)
+    public function edit($id)
     {
         return view('dosen.edit', [
             'dosen' => dosen::find($id)
@@ -57,8 +57,8 @@ class DosenController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, dosen $dosen)
-    {
+    public function update(Request $request, $id)
+     {
         $data = $request->except('_token', 'id', '_method');
 
         dosen::find($id)->update($data);
@@ -69,7 +69,7 @@ class DosenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(dosen $dosen)
+    public function destroy($id)
     {
        dosen::find($id)->delete();
 
