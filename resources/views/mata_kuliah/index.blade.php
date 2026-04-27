@@ -1,33 +1,31 @@
-<a href="{{route('mahasiswa.add')}}"> 
+<a href="{{route('mata_kuliah.add')}}"> 
     <input type="button" value="Create">
 </a>
 <table border="1">
     <thead>
         <th>No</th>
-        <th>Nama Lengkap</th>
-        <th>NIM</th>
-        <th>NISN</th>
-        <th>Tempat Lahir</th>
-        <th>Tanggal Lahir</th>
-        <th>Alamat</th>
+        <th>Jurusan</th>
+        <th>Kode Mata Kuliah</th>
+        <th>Nama Mata Kuliah</th>
+        <th>SKS</th>
+        <th>Dosen</th>
         <th>Tanggal Dibuat</th>
         <th>Aksi</th>
     </thead>
-    @foreach ($mahasiswa as $m)
+    @foreach ($mata_kuliah as $mk)
     <tr>
-        <td>{{$m->id}}</td>
-        <td>{{$m->Fullname}}</td>
-        <td>{{$m->NIM}}</td>
-        <td>{{$m->NIDN}}</td>
-        <td>{{$m->Tempat_Lahir}}</td>
-        <td>{{$m->Tanggal_Lahir}}</td>
-        <td>{{$m->Alamat}}</td>
-        <td>{{$m->created_at}}</td>
+        <td>{{$mk->id}}</td>
+        <td>{{$mk->Jurusan_Id}}</td>
+        <td>{{$mk->Kode_Mata_Kuliah}}</td>
+        <td>{{$mk->Nama_Mata_Kuliah}}</td>
+        <td>{{$mk->SKS}}</td>
+        <td>{{$mk->Dosen_Id}}</td>
+        <td>{{$mk->created_at}}</td>
         <td>
-            <a href="{{route('mahasiswa.edit', $m->id)}}"> 
+            <a href="{{route('mata_kuliah.edit', $mk->id)}}"> 
                 <input type="button" value="Edit">
             </a>
-            <form action="{{route('mahasiswa.delete', $m->id)}}" method="post" style="display:inline;">
+            <form action="{{route('mata_kuliah.delete', $mk->id)}}" method="post" style="display:inline;">
             @csrf
              @method('DELETE') 
             <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">

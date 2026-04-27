@@ -1,35 +1,30 @@
-<form action="{{ route('mahasiswa.save') }}" method="post">
+<form action="{{ route('mata_kuliah.save') }}" method="post">
 @csrf
 <table>
     <tr>
-        <td> Nama Lengkap</td>
+        <td>Kode Jurusan</td>
         <td>:</td>
-        <td><input type="text" name="Fullname"></td>
+        <td><input type="text" name="Jurusan_Id"></td>
     </tr>
     <tr>
-        <td>Nomor Induk Mahasiswa</td>
+        <td>Kode Mata Kuliah</td>
         <td>:</td>
-        <td><input type="text" name="NIM"></td>
+        <td><input type="text" name="Kode_Mata_Kuliah"></td>
     </tr>
     <tr>
-        <td>Nomor Induk Siswa Nasional</td>
+        <td>Nama Mata Kuliah</td>
         <td>:</td>
-        <td><input type="text" name="NIDN"></td>
+        <td><input type="text" name="Nama_Mata_Kuliah"></td>
     </tr>
     <tr>
-        <td>Tempat Lahir</td>
+        <td>SKS</td>
         <td>:</td>
-        <td><input type="text" name="Tempat_Lahir"></td>
+        <td><input type="text" name="SKS"></td>
     </tr>
     <tr>
-        <td>Tanggal Lahir</td>
+        <td>ID Dosen</td>
         <td>:</td>
-        <td><input type="text" name="Tanggal_Lahir"></td>   
-    </tr>
-    <tr>
-        <td>Alamat</td>
-        <td>:</td>
-        <td><textarea name="Alamat"></textarea></td>
+        <td><input type="text" name="Dosen_Id"></td>   
     </tr>
 </table>
 

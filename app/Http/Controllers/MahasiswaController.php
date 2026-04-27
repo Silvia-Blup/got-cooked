@@ -50,7 +50,7 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         return view('mahasiswa.edit', [
-            'm' => Mahasiswa::find($id)
+            'm' => $mahasiswa = Mahasiswa::find($id)
         ]);
     }
 

@@ -1,4 +1,3 @@
-{{$jurusan}}
 <form action="{{ route('jurusan.update', $jurusan->id) }}" method="post">
     @csrf
     @method('PUT')
