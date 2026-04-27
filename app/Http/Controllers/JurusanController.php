@@ -22,7 +22,7 @@ class JurusanController extends Controller
      */
     public function create()
     {
-        //
+        return view('jurusan.create', []);
     }
 
     /**
@@ -30,7 +30,10 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        Jurusan::create($data);
+
+        return redirect()->action([JurusanController::class, 'index']);
     }
 
     /**
@@ -38,7 +41,7 @@ class JurusanController extends Controller
      */
     public function show(string $id)
     {
-        //
+       return Jurusan::find($id);
     }
 
     /**
@@ -46,7 +49,9 @@ class JurusanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('jurusan.edit', [
+            'jurusan' => Jurusan::find($id)
+        ]);
     }
 
     /**
@@ -54,7 +59,11 @@ class JurusanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->except('_token', 'id', '_method');
+
+        Jurusan::find($id)->update($data);
+
+        return redirect()->action([JurusanController::class, 'index']);
     }
 
     /**
@@ -62,6 +71,8 @@ class JurusanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Jurusan::find($id)->delete();
+
+         return redirect()->action([JurusanController::class, 'index']);
     }
 }

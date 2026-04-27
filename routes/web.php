@@ -6,6 +6,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JurusanController;
 Route::resource('jurusan', JurusanController::class);
 
+Route::get('/jurusan', [JurusanController::class, 'index']);
+Route::get('/jurusan/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
+Route::get('/jurusan-create', [JurusanController::class, 'create'])->name('jurusan.add');
+Route::post('/jurusan', [JurusanController::class, 'store'])->name('jurusan.save');
+Route::get('/jurusan-edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
+Route::put('/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+Route::delete('/jurusan/{id}', [JurusanController::class, 'destroy'])->name('jurusan.delete');
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
