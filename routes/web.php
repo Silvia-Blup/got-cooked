@@ -3,6 +3,9 @@
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\JurusanController;
+Route::resource('jurusan', JurusanController::class);
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
