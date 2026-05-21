@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+Route::get('/',function () {
+    return view('dashboard');
+})->name('dashboard');
 
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
