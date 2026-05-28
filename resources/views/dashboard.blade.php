@@ -25,11 +25,12 @@
             Menu
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\DosenController::class, 'index']) }}">Dosen</a></li>
-            <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\MahasiswaController::class, 'index']) }}">Mahasiswa</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\JurusanController::class, 'index']) }}">Jurusan</a></li>
-            <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\MataKuliahController::class, 'index']) }}">Mata Kuliah</a></li>
+          <li><a class="dropdown-item" href="{{ url('/dosen') }}">Dosen</a></li>
+          <li><a class="dropdown-item" href="{{ url('/mahasiswa') }}">Mahasiswa</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="{{ url('/jurusan') }}">Jurusan</a></li>
+          <li><a class="dropdown-item" href="{{ url('/MataKuliah') }}">Mata Kuliah</a></li>
+          <li><a class="dropdown-item" href="{{ url('/Kelas') }}">Kelas</a></li>
           </ul> 
         </li>
 
@@ -43,5 +44,5 @@
 </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
-  ini buat test push
+  
 </html>

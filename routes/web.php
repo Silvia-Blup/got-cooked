@@ -16,6 +16,9 @@ Route::resource('dosen', DosenController::class);
 use App\Http\Controllers\MataKuliahController;
 Route::resource('mata_kuliah', MataKuliahController::class);
 
+use App\Http\Controllers\KelasController;
+Route::resource('Kelas', KelasController::class);
+
 Route::get('/jurusan', [JurusanController::class, 'index']);
 Route::get('/jurusan/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
 Route::get('/jurusan-create', [JurusanController::class, 'create'])->name('jurusan.add');
@@ -47,3 +50,10 @@ Route::post('/mata_kuliah', [MataKuliahController::class, 'store'])->name('mata_
 Route::get('/mata_kuliah-edit/{id}', [MataKuliahController::class, 'edit'])->name('mata_kuliah.edit');
 Route::put('/mata_kuliah/{id}', [MataKuliahController::class, 'update'])->name('mata_kuliah.update');
 Route::delete('/mata_kuliah/{id}', [MataKuliahController::class, 'destroy'])->name('mata_kuliah.delete');
+
+Route::get('/Kelas', [KelasController::class, 'index']);
+Route::get('/Kelas/{id}', [KelasController::class, 'show'])->name('Kelas.show');
+Route::get('/Kelas', [KelasController::class, 'create'])->name('Kelas.add');
+Route::post('/Kelas', [KelasController::class, 'store'])->name('Kelas.save');
+Route::put('/Kelas/{id}', [KelasController::class, 'update'])->name('Kelas.update');
+Route::delete('/Kelas/{id}', [KelasController::class, 'destroy'])->name('Kelas.delete');
