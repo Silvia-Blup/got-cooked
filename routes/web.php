@@ -1,9 +1,5 @@
 <?php
 
-Route::get('/',function () {
-    return view('dashboard');
-})->name('dashboard');
-
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +18,12 @@ Route::resource('Kelas', KelasController::class);
 use App\Http\Controllers\KRSController;
 Route::resource('KRS', KRSController::class);
 
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('dashboard', [
+        'user' => Auth::user(),
+    ]);
 })->name('dashboard');
 
 
@@ -38,7 +36,7 @@ Route::get('/jurusan-edit/{id}', [JurusanController::class, 'edit'])->name('juru
 Route::put('/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
 Route::delete('/jurusan/{id}', [JurusanController::class, 'destroy'])->name('jurusan.delete');
 
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
 Route::get('/mahasiswa/{id}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
 Route::get('/mahasiswa-create', [MahasiswaController::class, 'create'])->name('mahasiswa.add');
 Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('mahasiswa.save');
@@ -70,10 +68,10 @@ Route::put('/Kelas/{id}', [KelasController::class, 'update'])->name('Kelas.updat
 Route::delete('/Kelas/{id}', [KelasController::class, 'destroy'])->name('Kelas.delete');
 
 Route::resource('/krs', KRSController::class);
-
 });
 
 
+use App\Http\Controllers\AuthController;
 Route::get('/register', [AuthController::class, 'registerView']);
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 

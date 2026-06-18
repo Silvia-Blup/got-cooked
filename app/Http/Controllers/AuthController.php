@@ -86,7 +86,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->get('password')),
         ]);
 
-        return redirect(route('mahasiswa.index'));
+        return redirect(route('mahasiswa.index.'));
     }
 
     // User login
@@ -101,13 +101,10 @@ class AuthController extends Controller
 
             // Get the authenticated user.
             $user = Auth::user();
-
-            // (optional) Attach the role to the token.
-            $token = Auth::claims(['role' => $user->role])->fromUser($user);
             
             return redirect(route('mahasiswa.index'), 302, ['Authorization' => 'Bearer ' . $token]);
         } catch (Exception $e) {
-            return response()->json(['error' => 'Could not create token'], 500);
+            return response()->json(['error' => 'Could not create token', 'message' => $e->getMessage()], 500);
         }
     }
 
