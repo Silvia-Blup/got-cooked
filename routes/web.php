@@ -19,8 +19,10 @@ Route::resource('mata_kuliah', MataKuliahController::class);
 use App\Http\Controllers\KelasController;
 Route::resource('Kelas', KelasController::class);
 
-use App\Http\Controllers\KrsController;
-Route::resource('Krs', KrsController::class);
+use App\Http\Controllers\KRSController;
+Route::resource('KRS', KRSController::class);
+
+use App\Http\Controllers\AuthController;
 
 Route::get('/jurusan', [JurusanController::class, 'index']);
 Route::get('/jurusan/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
@@ -61,4 +63,9 @@ Route::post('/Kelas', [KelasController::class, 'store'])->name('Kelas.save');
 Route::put('/Kelas/{id}', [KelasController::class, 'update'])->name('Kelas.update');
 Route::delete('/Kelas/{id}', [KelasController::class, 'destroy'])->name('Kelas.delete');
 
-Route::get('/Krs', [KrsController::class, 'index']);
+Route::resource('/krs', KRSController::class);
+
+Route::get('/register', [AuthController::class, 'registerView']);
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/login', [AuthController::class, 'loginView']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');

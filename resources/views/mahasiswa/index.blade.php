@@ -7,9 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
 <body>
-<a href="{{route('mahasiswa.add')}}"> 
-    <input type="button" value="Create">
-</a>
+<a class="btn btn-primary" href="{{route('mahasiswa.add')}}" role="button">Create</a>
 <table border="1">
     <thead>
         <th>No</th>
@@ -33,9 +31,8 @@
         <td>{{$m->Alamat}}</td>
         <td>{{$m->created_at}}</td>
         <td>
-            <a href="{{route('mahasiswa.edit', $m->id)}}"> 
-                <input type="button" value="Edit">
-            </a>
+        <a class="btn btn-primary" href="{{route('mahasiswa.edit', $m->id)}}" role="button">Edit</a>
+            
             <form action="{{route('mahasiswa.delete', $m->id)}}" method="post" style="display:inline;">
             @csrf
             @method('DELETE') 

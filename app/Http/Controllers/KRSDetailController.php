@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KRS;
+use App\Models\crud;
 use Illuminate\Http\Request;
 
-class KRSController extends Controller
+class KRSDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('krs.index', [
-            'krs' => KRS::get()
-        ]);
+        //
     }
 
     /**
@@ -36,18 +34,15 @@ class KRSController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(crud $crud)
     {
-        return view('krs.show', [
-            'krs' => KRS::where('id', '=', $id)->with(['detail', 'mahasiswa',
-                'detail.kelas', 'detail.kelas.dosen', 'detail.kelas.matakuliah'])->first()
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KRS $kRS)
+    public function edit(crud $crud)
     {
         //
     }
@@ -55,7 +50,7 @@ class KRSController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KRS $kRS)
+    public function update(Request $request, crud $crud)
     {
         //
     }
@@ -63,7 +58,7 @@ class KRSController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KRS $kRS)
+    public function destroy(crud $crud)
     {
         //
     }

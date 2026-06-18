@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Krs extends Model
+class KRS extends Model
 {
-    use HasFactory;
+    protected $table = 'table_krs';
 
-    protected $table = 'Krs';
-    
     protected $fillable = [
         'kode_mahasiswa',
         'tahun_ajaran',
@@ -19,11 +16,11 @@ class Krs extends Model
         'total_sks'
     ];
 
-    public function mahasiswa(){
+    public function mahasiswa() {
         return $this->hasOne(Mahasiswa::class, 'id', 'kode_mahasiswa');
     }
 
-    public function mahasiswa(){
-        return $this->hasMany(KrsDetail::class, 'krs_id', 'id');
+    public function detail() {
+        return $this->hasMany(KRSDetail::class, 'krs_id', 'id');
     }
 }
