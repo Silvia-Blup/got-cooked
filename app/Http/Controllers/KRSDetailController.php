@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\crud;
+use App\Models\KRSDetail;
 use Illuminate\Http\Request;
 
 class KRSDetailController extends Controller
@@ -34,7 +34,7 @@ class KRSDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(crud $crud)
+    public function show(KRSDetail $kRSDetail)
     {
         //
     }
@@ -42,7 +42,7 @@ class KRSDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(crud $crud)
+    public function edit(KRSDetail $kRSDetail)
     {
         //
     }
@@ -50,7 +50,7 @@ class KRSDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, crud $crud)
+    public function update(Request $request, KRSDetail $kRSDetail)
     {
         //
     }
@@ -58,7 +58,7 @@ class KRSDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(crud $crud)
+    public function destroy(KRSDetail $kRSDetail)
     {
         //
     }

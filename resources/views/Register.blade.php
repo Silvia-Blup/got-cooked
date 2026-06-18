@@ -7,13 +7,17 @@
 </head>
 <body>
     <div>
-        <form method="post" action="{{ route('login') }}">
+        <form method="post" action="{{ route('register') }}">
             @csrf
             <table border="1" bgcolor="black">
                 <tr>
                     <td colspan=6 align="center"><h1><font color="white">
-                        Login
+                        Register User
                     </font></h1></td>
+                </tr>
+                <tr>
+                    <td><font color="white">Nama</font></td>
+                    <td colspan=5><input type="text" name="name" size="55" value="" placeholder="User Name"></td>
                 </tr>
                 <tr>
                     <td><font color="white">Email</font></td>
@@ -22,6 +26,10 @@
                 <tr>
                     <td><font color="white">Password</font></td>
                     <td colspan=5><input type="password" name="password" size="55" value="" placeholder="password"></td>
+                </tr>
+                <tr>
+                    <td><font color="white">Confirmation Password</font></td>
+                    <td colspan=5><input type="password" name="password_confirmation" size="55" value="" placeholder="please input your password, one more time"></td>
                 </tr>
                 <tr>
                     <td colspan="3" align="center"><input type="submit" value="Create"></td>

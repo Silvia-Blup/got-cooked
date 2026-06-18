@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('krs_details', function (Blueprint $table) {
-        $table->id();
-        $table->unsignedBigInteger('kode_krs');
-        // define foreign key constrait
-        $table->foreign('krs_id')->references('id')->m('table_krs')->onDelete('cascade');
+        Schema::create('table_krs_detail', function (Blueprint $table) {
+            $table->id();
+	        $table->unsignedBigInteger('krs_id');
+            // Define foreign key constraint
+            $table->foreign('krs_id')->references('id')->on('table_krs')->onDelete('cascade');
 
-        $table->unsignedBigInteger('kelas_id');
-        $table->foreign('kelas_id')->references('id')->m('table_kelas')->onDelete('cascade');
-        
-        $table->enum('status', ['pending', 'approved', 'declined']);
-        $table->timestamps();
-    });
+	        $table->unsignedBigInteger('kelas_id');
+            $table->foreign('kelas_id')->references('id')->on('table_kelas')->onDelete('cascade');
+
+	        $table->enum('status', ['pending', 'approved', 'declined']);
+	        $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('krs_details');
+        Schema::dropIfExists('table_krs_detail');
     }
 };

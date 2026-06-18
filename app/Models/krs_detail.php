@@ -2,26 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KrsDetail extends Model
+class KRSDetail extends Model
 {
-    use HasFactory;
-
-    protected $table = 'Krs_details';
+    protected $table = 'table_krs_detail';
 
     protected $fillable = [
-        'kode_Krs',
-        'kode_kelas',
+        'krs_id',
+        'kelas_id',
         'status'
     ];
 
-    public function kelas(){
-        return $this->hasOne(Kelas::class, 'id', 'kode_kelas');
+    public function kelas() {
+        return $this->hasOne(Kelas::class, 'id', 'kelas_id');
     }
 
-    public function krs(){
-        return $this->hasOne(KRS::class, 'id', 'id');
+    public function krs() {
+        return $this->hasOne(KRS::class, 'id', 'krs_id');
     }
 }

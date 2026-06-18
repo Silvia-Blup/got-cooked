@@ -29,7 +29,7 @@
           <li><a class="dropdown-item" href="{{ url('/mahasiswa') }}">Mahasiswa</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="{{ url('/jurusan') }}">Jurusan</a></li>
-          <li><a class="dropdown-item" href="{{ url('/MataKuliah') }}">Mata Kuliah</a></li>
+          <li><a class="dropdown-item" href="{{ url('/mata_kuliah') }}">Mata Kuliah</a></li>
           <li><a class="dropdown-item" href="{{ url('/Kelas') }}">Kelas</a></li>
           </ul> 
         </li>

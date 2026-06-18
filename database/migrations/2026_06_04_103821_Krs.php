@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Krs', function (Blueprint $table) {
-        $table->id();
-        $table->unsignedBigInteger('kode_mahasiswa');
-        // define foreign key constrait
-        $table->foreign('kode_mahasiswa')->references('id')->m('table_mahasiswa')->onDelete('cascade');
-        
-        $table->string('tahun_ajaran');
-        $table->enum('semester', ['ganjil', 'genap']);
-        $table->enum('status', ['pending', 'approved', 'partial', 'declined']);
-        $table->integer('total_sks');
-        $table->timestamps();
-    });
+        Schema::create('table_krs', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('kode_mahasiswa');
+            // Define foreign key constraint
+            $table->foreign('kode_mahasiswa')->references('id')->on('table_mahasiswa')->onDelete('cascade');
+
+            $table->string('tahun_ajaran');
+            $table->enum('semester', ['ganjil', 'genap']);
+            $table->enum('status', ['pending', 'approved', 'partial', 'declined']);
+            $table->integer('total_sks');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('table_krs');
     }
 };

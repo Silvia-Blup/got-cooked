@@ -24,6 +24,12 @@ Route::resource('KRS', KRSController::class);
 
 use App\Http\Controllers\AuthController;
 
+Route::get('/', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+Route::middleware('auth')->group(function(){
 Route::get('/jurusan', [JurusanController::class, 'index']);
 Route::get('/jurusan/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
 Route::get('/jurusan-create', [JurusanController::class, 'create'])->name('jurusan.add');
@@ -65,7 +71,11 @@ Route::delete('/Kelas/{id}', [KelasController::class, 'destroy'])->name('Kelas.d
 
 Route::resource('/krs', KRSController::class);
 
+});
+
+
 Route::get('/register', [AuthController::class, 'registerView']);
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+
 Route::get('/login', [AuthController::class, 'loginView']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
