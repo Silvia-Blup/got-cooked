@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kelas extends Model
 {
-    protected $table='table_Kelas';
+    protected $table = 'table_Kelas';
 
-      protected $fillable = [
+    protected $fillable = [
         'kode_kelas',
         'kode_mata_kuliah',
         'kode_dosen',
@@ -20,10 +20,14 @@ class Kelas extends Model
         'jumlah_mahasiswa',
         'semester'
     ];
+
+    public function matakuliah()
+    {
+        return $this->belongsTo(MataKuliah::class, 'kode_mata_kuliah');
+    }
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'kode_dosen');
+    }
 }
-
-public function matakuliah(){
-return $this->belongsTo(MataKuliah::classs, ‘kode_mata_kuliah’);
-
-public function dosen(){
-return $this->belongsTo(Dosen::classs, ‘kode_dosen’);

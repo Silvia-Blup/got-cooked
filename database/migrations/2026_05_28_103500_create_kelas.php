@@ -1,39 +1,79 @@
-<?php
+<form action="{{ route('Kelas.store') }}" method="post">
+@csrf
+<table>
+    <tr>
+        <td>Kode Kelas</td>
+        <td>:</td>
+        <td><input type="text" name="kode_kelas"></td>
+    </tr>
+    <tr>
+        <td>Kode Mata Kuliah</td>
+        <td>:</td>
+        <td><input type="text" name="kode_mata_kuliah"></td>
+    </tr>
+    <tr>
+        <td>Kode Dosen</td>
+        <td>:</td>
+        <td><input type="text" name="kode_dosen"></td>
+    </tr>
+    <tr>
+        <td>Hari</td>
+        <td>:</td>
+        <td>
+            <select name="hari">
+                <option value="senin">Senin</option>
+                <option value="selasa">Selasa</option>
+                <option value="rabu">Rabu</option>
+                <option value="kamis">Kamis</option>
+                <option value="jumat">Jumat</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Jam</td>
+        <td>:</td>
+        <td>
+            <select name="jam">
+                <option value="08:00 - 09:40">08:00 - 09:40</option>
+                <option value="09:50 - 11:30">09:50 - 11:30</option>
+                <option value="12:30 - 14:10">12:30 - 14:10</option>
+                <option value="17:00 - 18:40">17:00 - 18:40</option>
+                <option value="19:00 - 20:40">19:00 - 20:40</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Tahun Ajaran</td>
+        <td>:</td>
+        <td><input type="text" name="tahun_ajaran"></td>
+    </tr>
+    <tr>
+        <td>Ruang Kelas</td>
+        <td>:</td>
+        <td><input type="text" name="ruang_kelas"></td>
+    </tr>
+    <tr>
+        <td>Jumlah Max</td>
+        <td>:</td>
+        <td><input type="number" name="jumlah_max"></td>
+    </tr>
+    <tr>
+        <td>Jumlah Mahasiswa</td>
+        <td>:</td>
+        <td><input type="number" name="jumlah_mahasiswa" value="0"></td>
+    </tr>
+    <tr>
+        <td>Semester</td>
+        <td>:</td>
+        <td>
+            <select name="semester">
+                <option value="ganjil">Ganjil</option>
+                <option value="genap">Genap</option>
+            </select>
+        </td>
+    </tr>
+</table>
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('table_Kelas', function (Blueprint $table) {
-            $table->id();
-            $table->string('Kode_Kelas');
-            $table->unsignedBigInteger('kode_mata_kuliah');
-            $table->unsignedBigInteger('kode_dosen');
-            $table->enum('hari', ['senin', 'selasa', 'rabu', 'kamis', 'jumat']);
-            $table->enum('jam', ['08:00 - 09:40', '09:50 - 11:30', '12:30 - 14:10', '17:00 - 18:40', '19:00 - 20:40']);
-            $table->string('tahun_ajaran');
-            $table->string('ruang_kelas');
-            $table->integer('jumlah_max');
-            $table->integer('jumlah_mahasiswa')->default(0);
-            $table->enum('semester', ['ganjil', 'genap']);
-            $table->timestamps();
-            $table->unique(['kode_dosen', 'hari', 'jam', 'tahun_ajaran', 'semester']);
-            $table->unique(['ruang_kelas', 'hari', 'jam', 'tahun_ajaran', 'semester']);
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('table_Kelas');
-    }
-};
+<button type="submit">Add</button>
+<button type="reset">Clear</button>
+</form>

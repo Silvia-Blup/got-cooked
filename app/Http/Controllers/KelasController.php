@@ -7,73 +7,74 @@ use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('Kelas.index', [
-            'Kelas' => Kelas::all()
+        return view('kelas.index', [
+            'kelas' => Kelas::all()
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('Kelas.create', []);
+        return view('kelas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
+        $data = $request->validate([
+            'kode_kelas'        => 'required|string|max:255',
+            'kode_mata_kuliah'  => 'required|integer',
+            'kode_dosen'        => 'required|integer',
+            'hari'              => 'required|in:senin,selasa,rabu,kamis,jumat',
+            'jam'               => 'required|in:08:00 - 09:40,09:50 - 11:30,12:30 - 14:10,17:00 - 18:40,19:00 - 20:40',
+            'tahun_ajaran'      => 'required|string',
+            'ruang_kelas'       => 'required|string',
+            'jumlah_max'        => 'required|integer',
+            'jumlah_mahasiswa'  => 'nullable|integer',
+            'semester'          => 'required|in:ganjil,genap',
+        ]);
+
         Kelas::create($data);
 
-        return redirect()->action([KelasController::class, 'index']);
+        return redirect()->route('Kelas.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
-        return Kelas::find($id);
+        return Kelas::findOrFail($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
-        return view('Kelas.edit', [
-            'm' => $Kelas = Kelas::find($id)
+        return view('kelas.edit', [
+            'm' => Kelas::findOrFail($id)
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
-        $data = $request->except('_token', 'id', '_method');
+        $data = $request->validate([
+            'kode_kelas'        => 'required|string|max:255',
+            'kode_mata_kuliah'  => 'required|integer',
+            'kode_dosen'        => 'required|integer',
+            'hari'              => 'required|in:senin,selasa,rabu,kamis,jumat',
+            'jam'               => 'required|in:08:00 - 09:40,09:50 - 11:30,12:30 - 14:10,17:00 - 18:40,19:00 - 20:40',
+            'tahun_ajaran'      => 'required|string',
+            'ruang_kelas'       => 'required|string',
+            'jumlah_max'        => 'required|integer',
+            'jumlah_mahasiswa'  => 'nullable|integer',
+            'semester'          => 'required|in:ganjil,genap',
+        ]);
 
-        Kelas::find($id)->update($data);
+        Kelas::findOrFail($id)->update($data);
 
-        return redirect()->action([KelasController::class, 'index']);
+        return redirect()->route('Kelas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
-        
-         Kelas::find($id)->delete();
+        Kelas::findOrFail($id)->delete();
 
-         return redirect()->action([KelasController::class, 'index']);
+        return redirect()->route('Kelas.index');
     }
 }

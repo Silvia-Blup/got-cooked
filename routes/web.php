@@ -60,12 +60,6 @@ Route::get('/mata_kuliah-edit/{id}', [MataKuliahController::class, 'edit'])->nam
 Route::put('/mata_kuliah/{id}', [MataKuliahController::class, 'update'])->name('mata_kuliah.update');
 Route::delete('/mata_kuliah/{id}', [MataKuliahController::class, 'destroy'])->name('mata_kuliah.delete');
 
-Route::get('/Kelas', [KelasController::class, 'index']);
-Route::get('/Kelas/{id}', [KelasController::class, 'show'])->name('Kelas.show');
-Route::get('/Kelas', [KelasController::class, 'create'])->name('Kelas.add');
-Route::post('/Kelas', [KelasController::class, 'store'])->name('Kelas.save');
-Route::put('/Kelas/{id}', [KelasController::class, 'update'])->name('Kelas.update');
-Route::delete('/Kelas/{id}', [KelasController::class, 'destroy'])->name('Kelas.delete');
 
 Route::resource('/krs', KRSController::class);
 });
