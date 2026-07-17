@@ -26,7 +26,7 @@ Route::get('/', function () {
 })->name('dashboard');
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware('is_admin')->group(function () {
 Route::get('/jurusan', [JurusanController::class, 'index']);
 Route::get('/jurusan/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
 Route::get('/jurusan-create', [JurusanController::class, 'create'])->name('jurusan.add');

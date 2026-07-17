@@ -1,42 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <form method="post" action="{{ route('register') }}">
-            @csrf
-            <table border="1" bgcolor="black">
-                <tr>
-                    <td colspan=6 align="center"><h1><font color="white">
-                        Register User
-                    </font></h1></td>
-                </tr>
-                <tr>
-                    <td><font color="white">Nama</font></td>
-                    <td colspan=5><input type="text" name="name" size="55" value="" placeholder="User Name"></td>
-                </tr>
-                <tr>
-                    <td><font color="white">Email</font></td>
-                    <td colspan=5><input type="email" name="email" size="55" value="" placeholder="Email"></td>
-                </tr>
-                <tr>
-                    <td><font color="white">Password</font></td>
-                    <td colspan=5><input type="password" name="password" size="55" value="" placeholder="password"></td>
-                </tr>
-                <tr>
-                    <td><font color="white">Confirmation Password</font></td>
-                    <td colspan=5><input type="password" name="password_confirmation" size="55" value="" placeholder="please input your password, one more time"></td>
-                </tr>
-                <tr>
-                    <td colspan="3" align="center"><input type="submit" value="Create"></td>
-                    <td colspan="3" align="center"><input type="reset" value="Batal"></td>
-                </tr>
-            </table>
-        </form>
+@extends('dashboard')
+
+@section('content')
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
+    <div class="card shadow-sm mt-4" style="width: 100%; max-width: 500px;">
+        <div class="card-header table-light text-center py-3">
+            <h4 class="mb-0 fw-bold">Register User</h4>
+        </div>
+        <div class="card-body p-4">
+            <form method="post" action="{{ route('register') }}">
+                @csrf
+                
+                <!-- Nama Input -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nama</label>
+                    <input type="text" name="name" id="name" class="form-control" value="" placeholder="User Name" required>
+                </div>
+
+                <!-- Email Input -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" value="" placeholder="Email" required>
+                </div>
+
+                <!-- Password Input -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" value="" placeholder="password" required>
+                </div>
+
+                <!-- Confirmation Password Input -->
+                <div class="mb-3">
+                    <label for="password_confirmation" class="form-label">Confirmation Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" value="" placeholder="please input your password, one more time" required>
+                </div>
+
+                <!-- Buttons Action -->
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary w-50">Create</button>
+                    <button type="reset" class="btn btn-outline-secondary w-50">Batal</button>
+                </div>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+@endsection
