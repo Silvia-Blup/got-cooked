@@ -1,3 +1,7 @@
+@extends('dashboard')
+
+@section('content')
+
 @if ($errors->any())
     <div style="color:red;">
         <ul>
@@ -7,6 +11,7 @@
         </ul>
     </div>
 @endif
+
 <form action="{{ route('Kelas.store') }}" method="post">
 @csrf
 <table>
@@ -86,3 +91,4 @@
 <button type="Submit"> Add </button>
 <button type="reset"> Clear </button>
 </form>
+@endsection

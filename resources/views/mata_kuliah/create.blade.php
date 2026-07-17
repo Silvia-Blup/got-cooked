@@ -1,3 +1,7 @@
+@extends('dashboard')
+
+@section('content')
+
 <form action="{{ route('mata_kuliah.save') }}" method="post">
 @csrf
 <table>
@@ -31,3 +35,4 @@
 <button type="Submit"> Add </button>
 <button type="reset"> Clear </button>
 </form>
+@endsection

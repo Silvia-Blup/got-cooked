@@ -1,3 +1,7 @@
+@extends('dashboard')
+
+@section('content')
+
 <a href="{{route('jurusan.create')}}"> 
     <input type="button" value="Create">
 </a>
@@ -26,3 +30,4 @@
     </tr>
     @endforeach
 </table>
+@endsection

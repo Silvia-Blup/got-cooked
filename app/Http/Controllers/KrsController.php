@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\KRS;
+use App\Models\Mahasiswa;
+use App\Models\MataKuliah;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 
 class KRSController extends Controller
@@ -22,7 +25,11 @@ class KRSController extends Controller
      */
     public function create()
     {
-        //
+        return view('krs.create', [
+        'mahasiswa' => Mahasiswa::all(),
+        'MataKuliah' => MataKuliah::all(),
+        'Dosen' => Dosen::all()
+        ]);
     }
 
     /**
@@ -30,7 +37,17 @@ class KRSController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'kode_mahasiswa' => 'required|exists:table_mahasiswa,id',
+        'tahun_ajaran'   => 'required|string',
+        'semester'       => 'required|in:ganjil,genap',
+        'status'         => 'required|in:pending,approved,partial,declined',
+        'total_sks'      => 'required|integer|min:0',
+        ]);
+
+        KRS::create($validated);
+
+        return redirect()->route('krs.index')->with('success', 'Data KRS berhasil ditambahkan.');
     }
 
     /**

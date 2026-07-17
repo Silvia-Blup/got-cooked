@@ -15,10 +15,9 @@ Route::resource('mata_kuliah', MataKuliahController::class);
 use App\Http\Controllers\KelasController;
 Route::resource('Kelas', KelasController::class);
 
-use App\Http\Controllers\KRSController;
-Route::resource('KRS', KRSController::class);
-
 use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\KRSController;
 
 Route::get('/', function () {
     return view('dashboard', [
@@ -61,8 +60,8 @@ Route::put('/mata_kuliah/{id}', [MataKuliahController::class, 'update'])->name('
 Route::delete('/mata_kuliah/{id}', [MataKuliahController::class, 'destroy'])->name('mata_kuliah.delete');
 
 
-Route::resource('/krs', KRSController::class);
-});
+
+Route::resource('/krs', KRSController::class);});
 
 
 use App\Http\Controllers\AuthController;

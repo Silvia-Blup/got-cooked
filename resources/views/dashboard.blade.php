@@ -30,6 +30,7 @@
                   <li><a class="dropdown-item" href="{{ url('/jurusan') }}">Jurusan</a></li>
                   <li><a class="dropdown-item" href="{{ url('/mata_kuliah') }}">Mata Kuliah</a></li>
                   <li><a class="dropdown-item" href="{{ url('/Kelas') }}">Kelas</a></li>
+                  <li><a class="dropdown-item" href="{{ url('/krs') }}">KRS</a></li>
                 </ul>
               </li>
               @endif

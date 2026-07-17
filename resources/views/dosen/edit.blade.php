@@ -1,3 +1,7 @@
+@extends('dashboard')
+
+@section('content')
+
 {{$dosen}}
 <form action="{{ route('dosen.update', $dosen->id) }}" method="post">
     @csrf
@@ -43,3 +47,4 @@
         </tr>
     </table>
 </form>
+@endsection

@@ -1,3 +1,7 @@
+@extends('dashboard')
+
+@section('content')
+
 <form action="{{ route('dosen.save') }}" method="post">
     @csrf
     <table>
@@ -49,3 +53,4 @@
         </tr>
     </table>
 </form>
+@endsection

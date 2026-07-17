@@ -1,58 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Tambah Krs</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body class="container mt-5">
+@extends('dashboard')
+
+@section('content')
 
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4>Form Tambah Krs</h4>
+            <h4>Form Tambah KRS</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('Krs.store') }}" method="POST">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('krs.store') }}" method="post">
                 @csrf
-
-                <div class="mb-3">
-                    <label class="form-label">Kode Mahasiswa</label>
-                    <input type="number" name="kode_mahasiswa" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Tahun Ajaran</label>
-                    <input type="text" name="tahun_ajaran" class="form-control" placeholder="Contoh: 2025/2026" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Semester</label>
-                    <select name="semester" class="form-select" required>
-                        <option value="ganjil">Ganjil</option>
-                        <option value="genap">Genap</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Status</label>
-                    <select name="status" class="form-select" required>
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
-                        <option value="partial">Partial</option>
-                        <option value="declined">Declined</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Total SKS</label>
-                    <input type="number" name="total_sks" class="form-control" required>
-                </div>
-
-                <button type="submit" class="btn btn-success">Simpan Data</button>
-                <a href="{{ route('Krs.index') }}" class="btn btn-secondary">Kembali</a>
+                <table class="table table-light table-striped">
+                    <tr>
+                        <td>Mahasiswa</td>
+                        <td>:</td>
+                        <td><select name="kode_mahasiswa" class="form-control">
+                            <option value="">-- Pilih Mahasiswa --</option>
+                            @foreach ($mahasiswa as $m)
+                                <option value="{{ $m->id }}">{{ $m->Fullname ?? $m->nama }}</option>
+                            @endforeach
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Tahun Ajaran</td>
+                        <td>:</td>
+                        <td><input type="text" name="tahun_ajaran" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>Semester</td>
+                        <td>:</td>
+                        <td><select name="semester" class="form-control">
+                            <option value="">-- Pilih Semester --</option>
+                            <option value="ganjil">Ganjil</option>
+                            <option value="genap">Genap</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>:</td>
+                        <td><select name="status" class="form-control">
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="partial">Partial</option>
+                            <option value="declined">Declined</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Total SKS</td>
+                        <td>:</td>
+                        <td><input type="number" name="total_sks" class="form-control" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <input type="submit" value="Add" class="form-control"><br>
+                            <input type="reset" value="Clear" class="form-control">
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>
-
-</body>
-</html>
+@endsection

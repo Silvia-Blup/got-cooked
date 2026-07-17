@@ -16,7 +16,12 @@ class KelasController extends Controller
 
     public function create()
     {
-        return view('kelas.create');
+        return view('kelas.create', [
+            'MataKuliah' => \App\Models\MataKuliah::all(),
+            'Dosen' => \App\Models\Dosen::all(),
+            'hari' => ['senin', 'selasa', 'rabu', 'kamis', 'jumat'],
+            'jam' => ['08:00 - 09:40', '09:50 - 11:30', '12:30 - 14:10', '17:00 - 18:40', '19:00 - 20:40'],
+        ]);
     }
 
     public function store(Request $request)

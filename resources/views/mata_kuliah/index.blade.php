@@ -1,3 +1,7 @@
+@extends('dashboard')
+
+@section('content')
+
 <a href="{{route('mata_kuliah.add')}}"> 
     <input type="button" value="Create">
 </a>
@@ -34,3 +38,4 @@
     </tr>
     @endforeach
 </table>
+@endsection

@@ -1,3 +1,7 @@
+@extends('dashboard')
+
+@section('content')
+
 <form action="{{ route('mata_kuliah.update', $mk->id) }}" method="post">
     @csrf
     @method('PUT')
@@ -37,3 +41,4 @@
         </tr>
     </table>
 </form>
+@endsection
